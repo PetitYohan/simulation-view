@@ -11,8 +11,8 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [39.8282, -98.5795],
-      zoom: 3,
+      center: [45.7841601, 4.8697515],
+      zoom: 15,
     });
 
     const tiles = L.tileLayer(
