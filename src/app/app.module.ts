@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkerService } from './marker.service';
-import { PopupService } from './popup.service';
+import { PopUpService } from './popup.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [MarkerService, PopupService],
+  providers: [MarkerService, PopUpService],
   declarations: [AppComponent, MapComponent],
   bootstrap: [AppComponent],
 })
