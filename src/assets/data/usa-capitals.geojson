@@ -6,7 +6,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          4.794,45.787
+          4.800,
+          45.800
         ]
       },
       "properties": {
@@ -19,117 +20,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          4.794,45.794
+          4.896,
+          45.700
         ]
       },
       "properties": {
-        "id": 2,
+        "id": 60,
         "intensity": 0
       }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.801
-        ]
-      },
-      "properties": {
-        "id": 3,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.808
-        ]
-      },
-      "properties": {
-        "id": 4,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.815
-        ]
-      },
-      "properties": {
-        "id": 5,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.822
-        ]
-      },
-      "properties": {
-        "id": 6,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.829
-        ]
-      },
-      "properties": {
-        "id": 7,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.836
-        ]
-      },
-      "properties": {
-        "id": 8,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.843
-        ]
-      },
-      "properties": {
-        "id": 9,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.794,45.850
-        ]
-      },
-      "properties": {
-        "id": 10,
-        "intensity": 0
-      }
-    },
+    }
   ]
 }

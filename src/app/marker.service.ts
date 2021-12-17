@@ -12,7 +12,8 @@ export class MarkerService {
   constructor(private http: HttpClient, private popupService: PopUpService) {}
 
   static scaledRadius(val: number, maxVal: number): number {
-    return 20 * (val / maxVal);
+    //return 20 * (val / maxVal);
+    return 2;
   }
 
   makeCapitalMarkers(map: L.map): void {
