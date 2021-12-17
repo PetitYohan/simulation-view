@@ -91,7 +91,7 @@
         "type": "Point",
         "coordinates": [
           4.800,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -105,7 +105,7 @@
         "type": "Point",
         "coordinates": [
           4.820,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -119,7 +119,7 @@
         "type": "Point",
         "coordinates": [
           4.840,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -133,7 +133,7 @@
         "type": "Point",
         "coordinates": [
           4.860,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -147,7 +147,7 @@
         "type": "Point",
         "coordinates": [
           4.880,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -161,7 +161,7 @@
         "type": "Point",
         "coordinates": [
           4.900,
-          45.810
+          45.790
         ]
       },
       "properties": {
@@ -174,8 +174,176 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          4.800,
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.820,
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.840,
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.860,
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880,
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           4.900,
-          45.700
+          45.780
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.800,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.820,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.840,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.860,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900,
+          45.770
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900,
+          45.710
         ]
       },
       "properties": {
