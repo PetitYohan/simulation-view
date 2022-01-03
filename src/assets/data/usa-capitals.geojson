@@ -623,7 +623,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          4.820,
+          4.840,
           45.730
         ]
       },
@@ -758,7 +758,6 @@
         "intensity": 0
       }
     },
-
     {
       "type": "Feature",
       "geometry": {
@@ -769,7 +768,7 @@
         ]
       },
       "properties": {
-        "id": 45,
+        "id": 55,
         "intensity": 0
       }
     },
@@ -783,7 +782,7 @@
         ]
       },
       "properties": {
-        "id": 46,
+        "id": 56,
         "intensity": 0
       }
     },
@@ -797,7 +796,7 @@
         ]
       },
       "properties": {
-        "id": 47,
+        "id": 57,
         "intensity": 0
       }
     },
@@ -811,7 +810,7 @@
         ]
       },
       "properties": {
-        "id": 48,
+        "id": 58,
         "intensity": 0
       }
     },
@@ -825,21 +824,7 @@
         ]
       },
       "properties": {
-        "id": 49,
-        "intensity": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.900,
-          45.710
-        ]
-      },
-      "properties": {
-        "id": 50,
+        "id": 59,
         "intensity": 0
       }
     },
