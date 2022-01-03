@@ -510,6 +510,90 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          4.800,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.820,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.840,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.860,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900,
+          45.740
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "intensity": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           4.900,
           45.710
         ]
