@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sliders.component.css'],
 })
 export class SlidersComponent implements OnInit {
-  sliderValue = 0;
-  valeurs = [0, 1, 2, 3];
+  sliderValue;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sliderValue = 4;
+  }
 
-  readSlider(event) {
-    console.error(event);
+  valueChanged(e) {
+    console.log('e', e);
   }
 }

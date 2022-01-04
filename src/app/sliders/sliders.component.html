@@ -4,11 +4,13 @@
     type="range"
     min="0"
     max="9"
-    [value]="sliderValue"
+    value="sliderValue"
     class="slider"
     id="myRange"
+    (input)="valueChanged($event.target.value)"
   />
+  <output></output>
   <p>
-    Value: <span>{{ 'sliderValue' }}</span>
+    Value: <span>{{ sliderValue }}</span>
   </p>
 </div>
