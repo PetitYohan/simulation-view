@@ -2,12 +2,13 @@
 <div class="slidecontainer">
   <input
     type="range"
-    min="30"
-    max="300"
-    value="30"
+    min="0"
+    max="9"
+    [value]="sliderValue"
+    class="slider"
+    id="myRange"
     (input)="valueChanged($event.target)"
   />
-
   <p>
     Value: <span>{{ sliderValue }}</span>
   </p>
