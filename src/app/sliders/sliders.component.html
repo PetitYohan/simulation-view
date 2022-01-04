@@ -1,6 +1,10 @@
 <!-- A sidebar -->
 
 <div class="slidecontainer">
+  <h1>Réglage manuel du capteur</h1>
+  <p class="id">
+    Capteur n° <span>{{ 'id' }}</span>
+  </p>
   <input
     type="range"
     min="0"
@@ -10,7 +14,7 @@
     id="myRange"
     (input)="valueChanged($event.target)"
   />
-  <p>
-    Value: <span>{{ sliderValue }}</span>
+  <p class="value">
+    Value : <span>{{ sliderValue }}</span>
   </p>
 </div>

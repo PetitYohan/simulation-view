@@ -1,5 +1,16 @@
-<button mat-fab aria-label="Réglage manuel capteur">
-  <mat-icon svgIcon="wrench"></mat-icon>
-</button>
-<!--app-map></app-map-->
-<app-sliders></app-sliders>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-sliders></app-sliders>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <button
+      type="button"
+      mat-fab
+      aria-label="Réglage manuel capteur"
+      (click)="drawer.toggle()"
+    >
+      <mat-icon svgIcon="wrench"></mat-icon>
+    </button>
+    <!--app-map></app-map-->
+  </div>
+</mat-drawer-container>

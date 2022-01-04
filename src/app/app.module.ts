@@ -11,6 +11,8 @@ import { PopUpService } from './popup.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatIconModule,
     MatButtonModule,
     MatSliderModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
   ],
   providers: [MarkerService, PopUpService],
   declarations: [AppComponent, MapComponent, SlidersComponent],
