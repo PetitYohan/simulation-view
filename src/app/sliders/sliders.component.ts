@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlidersComponent implements OnInit {
   sliderValue;
+  _opened = false;
   constructor() {}
 
   ngOnInit() {
@@ -15,5 +16,9 @@ export class SlidersComponent implements OnInit {
 
   valueChanged(e) {
     this.sliderValue = e.value;
+  }
+
+  _toggleSidebar(): boolean {
+    return (this._opened = !this._opened);
   }
 }

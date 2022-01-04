@@ -1,4 +1,10 @@
-<p>sliders works!</p>
+<!-- A sidebar -->
+<ng-sidebar [(opened)]="_opened" position="end" [closeOnClickOutside]="true">
+  <div class="sidebar">
+    <p><B>Filtrer</B></p>
+  </div>
+</ng-sidebar>
+
 <div class="slidecontainer">
   <input
     type="range"
