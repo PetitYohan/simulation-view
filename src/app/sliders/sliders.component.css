@@ -23,15 +23,15 @@
   appearance: none;
   width: 23px;
   height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  border-radius: 50%;
+  background: #cf311f;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 23px;
   height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  border-radius: 50%;
+  background: #cf311f;
   cursor: pointer;
 }
