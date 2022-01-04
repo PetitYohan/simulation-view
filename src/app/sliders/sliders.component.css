@@ -36,26 +36,3 @@
   background: #cf311f;
   cursor: pointer;
 }
-
-.toggleSidebar {
-  position: absolute;
-  top: 6px;
-  left: 90%;
-  padding: 5px 15px;
-  transition-duration: 0.4s;
-  background-color: #93c90e;
-  color: white;
-  border: 2px solid #93c90e;
-  border-radius: 8px;
-}
-.toggleSidebar:hover {
-  background-color: white;
-  color: #93c90e;
-}
-
-.sidebar {
-  height: 100%;
-  width: 300px;
-  background-color: rgb(249, 253, 249);
-  border: 2px solid #93c90e;
-}
