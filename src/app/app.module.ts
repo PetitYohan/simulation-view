@@ -8,8 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkerService } from './marker.service';
 import { PopUpService } from './popup.service';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { SliderComponent } from '@angular-slider/ngx-slider/slider.component';
 
 @NgModule({
   imports: [
@@ -17,11 +18,11 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    MatSliderModule,
     MatButtonModule,
+    NgxSliderModule,
   ],
   providers: [MarkerService, PopUpService],
-  declarations: [AppComponent, MapComponent],
+  declarations: [AppComponent, MapComponent, SliderComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
