@@ -10,6 +10,7 @@ import { MarkerService } from './marker.service';
 import { PopUpService } from './popup.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
+    MatSliderModule,
   ],
   providers: [MarkerService, PopUpService],
   declarations: [AppComponent, MapComponent, SlidersComponent],
