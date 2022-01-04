@@ -1,2 +1,14 @@
 <p>sliders works!</p>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<div class="slidecontainer">
+  <input
+    type="range"
+    min="1"
+    max="100"
+    value="50"
+    class="slider"
+    id="myRange"
+  />
+  <p>
+    Value: <span>{{ sliderValue }}</span>
+  </p>
+</div>
