@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import capteurs from './capteurs.json';
 
 @Component({
   selector: 'app-sliders',
@@ -8,8 +7,6 @@ import capteurs from './capteurs.json';
 })
 export class SlidersComponent implements OnInit {
   sliderValue;
-  capteurIntensity: any;
-  capteurs: string = '/assets/data/capteurs.geojson';
   @Input() idCapteur: number;
   constructor() {}
 
