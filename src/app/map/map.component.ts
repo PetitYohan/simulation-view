@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
 
@@ -49,5 +49,10 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makeCircleMarkers(this.map);
+  }
+
+  @HostListener('document:click', ['$event'])
+  documentClick(event: MouseEvent) {
+    console.log(this.markerService.idClick);
   }
 }

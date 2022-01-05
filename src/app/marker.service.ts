@@ -9,11 +9,12 @@ import * as L from 'leaflet';
 export class MarkerService {
   capteurs: string = '/assets/data/capteurs.geojson';
   circleMarker: any;
+  idClick = 0;
 
   constructor(private http: HttpClient, private popupService: PopUpService) {}
 
   static scaledRadius(val: number, maxVal: number): number {
-    return 1000 * (val / maxVal);
+    return 1000 * (val / maxVal) + 50;
   }
 
   makeCircleMarkers(map: L.map): void {
@@ -27,8 +28,8 @@ export class MarkerService {
         circle.bindPopup(this.popupService.makeCapteurPopup(c.properties));
         circle.myCustomID = c.properties.id;
         circle.addTo(map);
-        circle.on('click', function (e) {
-          console.log(e.target.myCustomID);
+        circle.on('click', (e) => {
+          this.idClick = e.target.myCustomID;
         });
       }
     });
