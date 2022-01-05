@@ -7,10 +7,11 @@
       type="button"
       mat-fab
       aria-label="Réglage manuel capteur"
-      (click)="drawer.toggle()"
+      (click)="sliderToggle(); drawer.toggle()"
     >
-      <mat-icon svgIcon="wrench"></mat-icon>
+      <mat-icon *ngIf="!slide" svgIcon="wrench"></mat-icon>
+      <mat-icon *ngIf="slide" svgIcon="map"></mat-icon>
     </button>
-    <!--app-map></app-map-->
+    <app-map (idCapteur)="idCapteurHandler($event)"></app-map>
   </div>
 </mat-drawer-container>

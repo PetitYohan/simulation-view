@@ -8,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  idCapteur: number;
+  slide = false;
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
@@ -24,5 +26,14 @@ export class AppComponent {
         '../assets/icons/wrench-solid.svg'
       )
     );
+  }
+
+  idCapteurHandler(val: number) {
+    this.idCapteur = val;
+    console.log(val);
+  }
+
+  sliderToggle() {
+    this.slide = !this.slide;
   }
 }

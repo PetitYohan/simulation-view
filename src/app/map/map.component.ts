@@ -1,4 +1,10 @@
-import { Component, AfterViewInit, HostListener } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  HostListener,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
 
@@ -24,6 +30,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map;
+  @Output() idCapteur: EventEmitter<number> = new EventEmitter();
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -53,6 +60,6 @@ export class MapComponent implements AfterViewInit {
 
   @HostListener('document:click', ['$event'])
   documentClick(event: MouseEvent) {
-    console.log(this.markerService.idClick);
+    this.idCapteur.emit(this.markerService.idClick);
   }
 }
