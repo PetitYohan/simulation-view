@@ -14,7 +14,7 @@ export class SlidersComponent implements OnInit {
   ngOnInit() {
     this.sliderValue = 0;
   }
-
+  
   valueChanged(e) {
     this.sliderValue = e.value;
   }
