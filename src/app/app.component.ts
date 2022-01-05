@@ -30,7 +30,6 @@ export class AppComponent {
 
   idCapteurHandler(val: number) {
     this.idCapteur = val;
-    console.log(val);
   }
 
   sliderToggle() {
