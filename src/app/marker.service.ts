@@ -9,7 +9,7 @@ import * as L from 'leaflet';
 export class MarkerService {
   capteurs: string = '/assets/data/capteurs.geojson';
   circleMarker: any;
-  idClick = 0;
+  idClick = 1;
 
   constructor(private http: HttpClient, private popupService: PopUpService) {}
 
