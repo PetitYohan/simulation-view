@@ -11,9 +11,7 @@ export class SlidersComponent implements OnInit {
   capteurIntensity: any;
   capteurs: string = '/assets/data/capteurs.geojson';
   @Input() idCapteur: number;
-  constructor() {
-    this.capteurIntensity = capteurs;
-  }
+  constructor() {}
 
   ngOnInit() {
     this.sliderValue = 0;
