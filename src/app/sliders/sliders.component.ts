@@ -19,6 +19,12 @@ export class SlidersComponent implements OnInit {
 
   valueChanged(e) {
     this.sliderValue = e.value;
+    for (const c of this.capteursData.capteurs) {
+      if (c.id == this.idCapteur) {
+        c.intensity = this.sliderValue;
+      }
+    }
+    //modifier json
   }
 
   @HostListener('document:click', ['$event'])
@@ -30,5 +36,6 @@ export class SlidersComponent implements OnInit {
         this.sliderValue = c.intensity;
       }
     }
+    console.log(this.sliderValue);
   }
 }

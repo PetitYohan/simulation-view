@@ -14,7 +14,7 @@ export class MarkerService {
   constructor(private http: HttpClient, private popupService: PopUpService) {}
 
   static scaledRadius(val: number, maxVal: number): number {
-    return 1000 * (val / maxVal) + 50;
+    return 1000 * (val / maxVal) + 75;
   }
 
   makeCircleMarkers(map: L.map): void {
