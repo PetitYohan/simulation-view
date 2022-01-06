@@ -24,7 +24,7 @@ export class SlidersComponent implements OnInit {
         c.intensity = this.sliderValue;
       }
     }
-    //modifier json
+    //modifier json // passer par un array au lieu du json, juste le charger au démarrage
   }
 
   @HostListener('document:click', ['$event'])
