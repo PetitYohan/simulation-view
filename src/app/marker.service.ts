@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PopUpService } from './popup.service';
 import * as L from 'leaflet';
+import capteurs from '../assets/data/capteurs.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MarkerService {
-  capteurs: string = '/assets/data/capteurs.geojson';
+  capteursData: any;
   circleMarker: any;
   idClick = 1;
 
@@ -18,20 +19,19 @@ export class MarkerService {
   }
 
   makeCircleMarkers(map: L.map): void {
-    this.http.get(this.capteurs).subscribe((res: any) => {
-      for (const c of res.features) {
-        const lon = c.geometry.coordinates[0];
-        const lat = c.geometry.coordinates[1];
-        const circle = L.circle([lat, lon], {
-          radius: MarkerService.scaledRadius(c.properties.intensity, 9),
-        });
-        circle.bindPopup(this.popupService.makeCapteurPopup(c.properties));
-        circle.myCustomID = c.properties.id;
-        circle.addTo(map);
-        circle.on('click', (e) => {
-          this.idClick = e.target.myCustomID;
-        });
-      }
-    });
+    this.capteursData = capteurs;
+    for (const c of this.capteursData) {
+      const lon = c.coordinates[0];
+      const lat = c.coordinates[1];
+      const circle = L.circle([lat, lon], {
+        radius: MarkerService.scaledRadius(c.intensity, 9),
+      });
+      circle.bindPopup(this.popupService.makeCapteurPopup(c));
+      circle.myCustomID = c.properties.id;
+      circle.addTo(map);
+      circle.on('click', (e) => {
+        this.idClick = e.target.myCustomID;
+      });
+    }
   }
 }
