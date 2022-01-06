@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import capteurs from '../../assets/data/capteurs.json';
+import { MarkerService } from '../marker.service';
 
 @Component({
   selector: 'app-sliders',
@@ -7,8 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SlidersComponent implements OnInit {
   sliderValue;
-  @Input() idCapteur: number;
-  constructor() {}
+  capteursData: any;
+  idCapteur: number;
+  constructor(private markerService: MarkerService) {}
 
   ngOnInit() {
     this.sliderValue = 0;
@@ -16,5 +19,16 @@ export class SlidersComponent implements OnInit {
 
   valueChanged(e) {
     this.sliderValue = e.value;
+  }
+
+  @HostListener('document:click', ['$event'])
+  documentClick(event: MouseEvent) {
+    this.idCapteur = this.markerService.idClick;
+    this.capteursData = capteurs;
+    for (const c of this.capteursData.capteurs) {
+      if (c.id == this.idCapteur) {
+        this.sliderValue = c.intensity;
+      }
+    }
   }
 }
