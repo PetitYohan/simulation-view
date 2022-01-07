@@ -61,7 +61,7 @@ export class AppComponent {
         this.totalAngularPackages = data;
       });
     console.log(this.totalAngularPackages);
-    for (let i = 0; i <= 4; i++) {
+    for (let i = 0; i < 4; i++) {
       this.getCapteursValue[i].id = this.totalAngularPackages.capteurs[i].id;
       this.getCapteursValue[i].intensity =
         this.totalAngularPackages.capteurs[i].intensity;
