@@ -17,9 +17,8 @@
     </button>
     <h1>Simulateur View 🔥</h1>
     <app-map [capteursData]="capteursData"></app-map>
-    <p>
-      Capteur n°{{ getCapteur[0].id }} intensité =
-      {{ getCapteur[0].intensity }}
-    </p>
+    <button (click)="onActualisation()">
+      <mat-icon svgIcon="fire"></mat-icon>
+    </button>
   </div>
 </mat-drawer-container>

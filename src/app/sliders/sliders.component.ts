@@ -14,16 +14,11 @@ import { MarkerService } from '../marker.service';
   styleUrls: ['./sliders.component.css'],
 })
 export class SlidersComponent implements OnInit {
-  sliderValue;
   @Input() capteursData: any;
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
-  c = {
-    coordinates: [4.9, 45.71],
-    id: 60,
-    intensity: 7,
-  }; //Temporaire remonter l'id marker clicked
-
   idCapteur: number;
+  sliderValue;
+
   constructor(private markerService: MarkerService) {}
 
   ngOnInit() {
@@ -42,7 +37,11 @@ export class SlidersComponent implements OnInit {
       }
     }
     this.update();
-    this.markerService.updateCircleMarkers(this.markerService.map, this.idCapteur, this.sliderValue);
+    this.markerService.updateCircleMarkers(
+      this.markerService.map,
+      this.idCapteur,
+      this.sliderValue
+    );
   }
 
   @HostListener('document:click', ['$event'])

@@ -4,6 +4,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import capteurs from '../assets/data/capteurs.json';
 import { Capteur } from './capteur';
+import { MarkerService } from './marker.service';
 
 @Component({
   selector: 'my-app',
@@ -15,12 +16,13 @@ export class AppComponent {
   slide = false;
   capteursData: any;
   totalAngularPackages;
-  getCapteur: Capteur[] = [{ id: 0, intensity: 0 }];
+  getCapteursValue: Capteur[] = [{ id: 0, intensity: 0 }];
 
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private markerService: MarkerService
   ) {
     this.capteursData = capteurs;
     this.matIconRegistry.addSvgIcon(
@@ -35,20 +37,45 @@ export class AppComponent {
         '../assets/icons/wrench-solid.svg'
       )
     );
+    this.matIconRegistry.addSvgIcon(
+      'fire',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/fire-solid.svg'
+      )
+    );
   }
 
   sliderToggle() {
     this.slide = !this.slide;
-    this.httpClient.get('http://localhost:8000/test').subscribe((data) => {
-      this.totalAngularPackages = data;
-    });
+  }
+
+  getCapteurs() {
+    this.httpClient
+      .get('http://localhost:8000/getCapteurs')
+      .subscribe((data) => {
+        this.totalAngularPackages = data;
+      });
     console.log(this.totalAngularPackages);
-    this.getCapteur[0].id = this.totalAngularPackages.capteurs[0].id;
-    this.getCapteur[0].intensity =
-      this.totalAngularPackages.capteurs[0].intensity;
+    for (let i = 0; i <= 4; i++) {
+      this.getCapteursValue[i].id = this.totalAngularPackages.capteurs[i].id;
+      this.getCapteursValue[i].intensity =
+        this.totalAngularPackages.capteurs[i].intensity;
+    }
   }
 
   capteurChangedHandler(c) {
     console.log(c);
+  }
+
+  //trouver le moyen d'actualiser la page toute les X sec
+  onActualisation() {
+    this.getCapteurs();
+    for (let i = 0; i <= 4; i++) {
+      this.markerService.updateCircleMarkers(
+        this.markerService.map,
+        this.getCapteursValue[i].id,
+        this.getCapteursValue[i].intensity
+      );
+    }
   }
 }
