@@ -18,3 +18,9 @@ button {
   top: 1vh;
   left: 2vw;
 }
+
+h1 {
+  position: absolute;
+  left: 8vw;
+  top: -1vh;
+}
