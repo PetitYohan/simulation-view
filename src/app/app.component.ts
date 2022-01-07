@@ -75,7 +75,7 @@ export class AppComponent {
   //trouver le moyen d'actualiser la page toute les X sec
   onActualisation() {
     this.getCapteurs();
-    for (let i = 0; i <= 4; i++) {
+    for (let i = 0; i <= 3; i++) {
       this.markerService.updateCircleMarkers(
         this.markerService.map,
         this.getCapteursValue[i].id,
