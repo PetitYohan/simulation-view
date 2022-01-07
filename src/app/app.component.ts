@@ -42,6 +42,7 @@ export class AppComponent {
       .subscribe((data) => {
         this.totalAngularPackages = data;
       });
+    console.log(this.totalAngularPackages);
   }
 
   capteurChangedHandler(c) {
