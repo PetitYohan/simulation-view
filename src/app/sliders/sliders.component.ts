@@ -6,7 +6,6 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Capteur } from '../capteur';
 import { MarkerService } from '../marker.service';
 
 @Component({
@@ -18,6 +17,11 @@ export class SlidersComponent implements OnInit {
   sliderValue;
   @Input() capteursData: any;
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
+  c = {
+    coordinates: [4.9, 45.71],
+    id: 60,
+    intensity: 7,
+  }; //Temporaire remonter l'id marker clicked
 
   update() {
     this.capteursChange.emit(this.capteursData);
@@ -38,7 +42,7 @@ export class SlidersComponent implements OnInit {
       }
     }
     this.update();
-    //modifier json // passer par un array au lieu du json, juste le charger au démarrage
+    this.markerService.updateCircleMarkers(this.markerService.map, this.c);
   }
 
   @HostListener('document:click', ['$event'])

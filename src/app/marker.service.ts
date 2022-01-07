@@ -11,6 +11,7 @@ export class MarkerService {
   circleMarker: any;
   circleList = [];
   idClick = 1;
+  map;
 
   constructor(private http: HttpClient, private popupService: PopUpService) {}
 
@@ -19,6 +20,7 @@ export class MarkerService {
   }
 
   makeCircleMarkers(map: L.map, data): void {
+    this.map = map;
     for (const c of data) {
       const lon = c.coordinates[0];
       const lat = c.coordinates[1];
@@ -36,11 +38,24 @@ export class MarkerService {
   }
 
   updateCircleMarkers(map: L.map, data) {
-    map.removeLayer(this.circleList[data.id]);
+    var i: number;
+    for (i = 1; i <= 60; i++) {
+      console.log(this.circleList[i].myCustomID);
+      if (this.circleList[i].myCustomID == data.id) {
+        map.removeLayer(this.circleList[i]);
+      }
+    }
     const lon = data.coordinates[0];
     const lat = data.coordinates[1];
-    const circle = L.circle([,],{
+    const circle = L.circle([lat, lon], {
       radius: MarkerService.scaledRadius(data.intensity, 9),
     });
+    circle.bindPopup(this.popupService.makeCapteurPopup(data));
+    circle.myCustomID = data.id;
+    circle.addTo(map);
+    circle.on('click', (e) => {
+      this.idClick = e.target.myCustomID;
+    });
+    this.circleList[data.id] = circle;
   }
 }
