@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import capteurs from '../assets/data/capteurs.json';
+import { Capteur } from './capteur';
 
 @Component({
   selector: 'my-app',
@@ -14,8 +15,7 @@ export class AppComponent {
   slide = false;
   capteursData: any;
   totalAngularPackages;
-  idValue;
-  intensityValue;
+  getCapteur: Capteur[];
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -43,8 +43,8 @@ export class AppComponent {
       this.totalAngularPackages = data;
     });
     console.log(this.totalAngularPackages);
-    this.idValue = this.totalAngularPackages.capteurs.id;
-    this.intensityValue = this.totalAngularPackages.capteurs.intensity;
+    this.getCapteur[0].id = this.totalAngularPackages[0].id;
+    this.getCapteur[0].intensity = this.totalAngularPackages[0].intensity;
   }
 
   capteurChangedHandler(c) {
