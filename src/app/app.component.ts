@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -12,10 +13,12 @@ export class AppComponent {
   idCapteur: number;
   slide = false;
   capteursData: any;
+  totalAngularPackages;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private httpClient: HttpClient
   ) {
     this.capteursData = capteurs;
     this.matIconRegistry.addSvgIcon(
@@ -34,6 +37,11 @@ export class AppComponent {
 
   sliderToggle() {
     this.slide = !this.slide;
+    return this.httpClient
+      .get('http://localhost:4200/test')
+      .subscribe((data) => {
+        this.totalAngularPackages = data;
+      });
   }
 
   capteurChangedHandler(c) {
