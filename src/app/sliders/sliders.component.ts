@@ -1,5 +1,12 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import capteurs from '../../assets/data/capteurs.json';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Capteur } from '../capteur';
 import { MarkerService } from '../marker.service';
 
 @Component({
@@ -9,7 +16,13 @@ import { MarkerService } from '../marker.service';
 })
 export class SlidersComponent implements OnInit {
   sliderValue;
-  capteursData: any;
+  @Input() capteursData: any;
+  @Output() capteursChange: EventEmitter<any> = new EventEmitter();
+
+  update() {
+    this.capteursChange.emit(this.capteursData);
+  }
+
   idCapteur: number;
   constructor(private markerService: MarkerService) {}
 
@@ -19,23 +32,22 @@ export class SlidersComponent implements OnInit {
 
   valueChanged(e) {
     this.sliderValue = e.value;
-    for (const c of this.capteursData.capteurs) {
+    for (const c of this.capteursData) {
       if (c.id == this.idCapteur) {
         c.intensity = this.sliderValue;
       }
     }
+    this.update();
     //modifier json // passer par un array au lieu du json, juste le charger au démarrage
   }
 
   @HostListener('document:click', ['$event'])
   documentClick(event: MouseEvent) {
     this.idCapteur = this.markerService.idClick;
-    this.capteursData = capteurs;
-    for (const c of this.capteursData.capteurs) {
+    for (const c of this.capteursData) {
       if (c.id == this.idCapteur) {
         this.sliderValue = c.intensity;
       }
     }
-    console.log(this.sliderValue);
   }
 }

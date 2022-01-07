@@ -1,6 +1,9 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <app-sliders></app-sliders>
+    <app-sliders
+      [capteursData]="capteursData"
+      (customerChange)="capteurChangedHandler($event)"
+    ></app-sliders>
   </mat-drawer>
   <div class="example-sidenav-content">
     <button
@@ -12,6 +15,6 @@
       <mat-icon *ngIf="!slide" svgIcon="wrench"></mat-icon>
       <mat-icon *ngIf="slide" svgIcon="map"></mat-icon>
     </button>
-    <app-map></app-map>
+    <app-map [capteursData]="capteursData"></app-map>
   </div>
 </mat-drawer-container>
