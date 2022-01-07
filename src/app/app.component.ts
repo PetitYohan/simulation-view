@@ -37,11 +37,9 @@ export class AppComponent {
 
   sliderToggle() {
     this.slide = !this.slide;
-    return this.httpClient
-      .get('http://localhost:4200/test')
-      .subscribe((data) => {
-        this.totalAngularPackages = data;
-      });
+    this.httpClient.get('http://localhost:8000/test').subscribe((data) => {
+      this.totalAngularPackages = data;
+    });
     console.log(this.totalAngularPackages);
   }
 
