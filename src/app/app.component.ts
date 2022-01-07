@@ -40,7 +40,7 @@ export class AppComponent {
     this.httpClient.get('http://localhost:8000/test').subscribe((data) => {
       this.totalAngularPackages = data;
     });
-    console.log(this.totalAngularPackages);
+    console.log(this.totalAngularPackages.capteurs);
   }
 
   capteurChangedHandler(c) {
