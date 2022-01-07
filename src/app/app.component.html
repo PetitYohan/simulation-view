@@ -16,6 +16,10 @@
       <mat-icon *ngIf="slide" svgIcon="map"></mat-icon>
     </button>
     <h1>Simulateur View 🔥</h1>
+    <p>
+      Capteur n°{{ totalAngularPackages.id }} intensité =
+      {{ totalAngularPackages.intensity }}
+    </p>
     <app-map [capteursData]="capteursData"></app-map>
   </div>
 </mat-drawer-container>
