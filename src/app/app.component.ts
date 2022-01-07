@@ -43,8 +43,9 @@ export class AppComponent {
       this.totalAngularPackages = data;
     });
     console.log(this.totalAngularPackages);
-    this.getCapteur[0].id = this.totalAngularPackages[0].id;
-    this.getCapteur[0].intensity = this.totalAngularPackages[0].intensity;
+    this.getCapteur[0].id = this.totalAngularPackages.capteurs[0].id;
+    this.getCapteur[0].intensity =
+      this.totalAngularPackages.capteurs[0].intensity;
   }
 
   capteurChangedHandler(c) {
