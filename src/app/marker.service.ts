@@ -37,25 +37,26 @@ export class MarkerService {
     }
   }
 
-  updateCircleMarkers(map: L.map, data) {
+  updateCircleMarkers(map: L.map, id, intensity) {
     var i: number;
     for (i = 1; i <= 60; i++) {
-      console.log(this.circleList[i].myCustomID);
-      if (this.circleList[i].myCustomID == data.id) {
+      if (this.circleList[i].myCustomID == id) {
         map.removeLayer(this.circleList[i]);
       }
     }
-    const lon = data.coordinates[0];
-    const lat = data.coordinates[1];
+    const lon = this.circleList[id].getLatLng().lng;
+    const lat = this.circleList[id].getLatLng().lat;
     const circle = L.circle([lat, lon], {
-      radius: MarkerService.scaledRadius(data.intensity, 9),
+      radius: MarkerService.scaledRadius(intensity, 9),
     });
-    circle.bindPopup(this.popupService.makeCapteurPopup(data));
-    circle.myCustomID = data.id;
+    circle.bindPopup(
+      this.popupService.makeCapteurPopup({ id: id, intensity: intensity })
+    );
+    circle.myCustomID = id;
     circle.addTo(map);
     circle.on('click', (e) => {
       this.idClick = e.target.myCustomID;
     });
-    this.circleList[data.id] = circle;
+    this.circleList[id] = circle;
   }
 }

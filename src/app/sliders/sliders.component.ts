@@ -23,15 +23,15 @@ export class SlidersComponent implements OnInit {
     intensity: 7,
   }; //Temporaire remonter l'id marker clicked
 
-  update() {
-    this.capteursChange.emit(this.capteursData);
-  }
-
   idCapteur: number;
   constructor(private markerService: MarkerService) {}
 
   ngOnInit() {
     this.sliderValue = 0;
+  }
+
+  update() {
+    this.capteursChange.emit(this.capteursData);
   }
 
   valueChanged(e) {
@@ -42,7 +42,7 @@ export class SlidersComponent implements OnInit {
       }
     }
     this.update();
-    this.markerService.updateCircleMarkers(this.markerService.map, this.c);
+    this.markerService.updateCircleMarkers(this.markerService.map, this.idCapteur, this.sliderValue);
   }
 
   @HostListener('document:click', ['$event'])
