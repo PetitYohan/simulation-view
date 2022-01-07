@@ -75,7 +75,6 @@ export class AppComponent {
     console.log(c);
   }
 
-  //trouver le moyen d'actualiser la page toute les X sec
   onActualisation() {
     this.getCapteurs();
     for (let i = 0; i <= 3; i++) {
