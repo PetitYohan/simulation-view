@@ -15,7 +15,7 @@ export class AppComponent {
   slide = false;
   capteursData: any;
   totalAngularPackages;
-  getCapteur: Capteur[];
+  getCapteur: Capteur[] = [{ id: 0, intensity: 0 }];
 
   constructor(
     private matIconRegistry: MatIconRegistry,
