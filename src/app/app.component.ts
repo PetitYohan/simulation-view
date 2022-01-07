@@ -14,6 +14,8 @@ export class AppComponent {
   slide = false;
   capteursData: any;
   totalAngularPackages;
+  idValue;
+  intensityValue;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -40,7 +42,8 @@ export class AppComponent {
     this.httpClient.get('http://localhost:8000/test').subscribe((data) => {
       this.totalAngularPackages = data;
     });
-    console.log(this.totalAngularPackages.capteurs);
+    this.idValue = this.totalAngularPackages.capteurs.id;
+    this.intensityValue = this.totalAngularPackages.capteurs.intensity;
   }
 
   capteurChangedHandler(c) {
