@@ -42,6 +42,7 @@ export class AppComponent {
     this.httpClient.get('http://localhost:8000/test').subscribe((data) => {
       this.totalAngularPackages = data;
     });
+    console.log(this.totalAngularPackages);
     this.idValue = this.totalAngularPackages.capteurs.id;
     this.intensityValue = this.totalAngularPackages.capteurs.intensity;
   }
