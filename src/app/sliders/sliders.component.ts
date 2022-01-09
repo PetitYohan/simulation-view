@@ -56,7 +56,6 @@ export class SlidersComponent implements OnInit {
     this.postCapteur.capteurs[0].id = this.idCapteur;
     this.postCapteur.capteurs[0].intensity = Number(this.capteursData[this.idCapteur-1].intensity);
     const body=JSON.stringify(this.postCapteur);
-    console.log(body);
     this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe(data => {
       console.log(data);
     });
