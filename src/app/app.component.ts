@@ -48,9 +48,7 @@ export class AppComponent {
         '../assets/icons/fire-solid.svg'
       )
     );
-    /*setInterval(function () {
-      this.onActualisation();
-    }, 15000);*/
+    setInterval(()=>this.onActualisation(), 15000);
   }
 
   sliderToggle() {
@@ -75,7 +73,7 @@ export class AppComponent {
     console.log(c);
   }
 
-  onActualisation() {
+  onActualisation(): any {
     this.getCapteurs();
     for (let i = 0; i <= 3; i++) {
       this.markerService.updateCircleMarkers(
