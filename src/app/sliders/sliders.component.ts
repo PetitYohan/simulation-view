@@ -21,7 +21,7 @@ export class SlidersComponent implements OnInit {
   idCapteur: number;
   sliderValue;
   postId: number;
-  test = {"capteurs" : [{
+  postCapteur = {"capteurs" : [{
     "id": 42,
     "intensity": 8
   }]}
@@ -53,8 +53,9 @@ export class SlidersComponent implements OnInit {
   }
 
   postCapteurs(){
-    const body=JSON.stringify(this.test);
-    console.log(body);
+    this.postCapteur.capteurs[0].id = this.idCapteur;
+    this.postCapteur.capteurs[0].intensity = this.capteursData[this.idCapteur-1].intensity;
+    const body=JSON.stringify(this.postCapteur);
     this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe(data => {
       console.log(data);
     });
