@@ -15,7 +15,7 @@ export class AppComponent {
   idCapteur: number;
   slide = false;
   capteursData: any;
-  totalAngularPackages;
+  response;
   getCapteursValue: Capteur[] = [
     { id: 0, intensity: 0 },
     { id: 1, intensity: 0 },
@@ -48,7 +48,7 @@ export class AppComponent {
         '../assets/icons/fire-solid.svg'
       )
     );
-    setInterval(()=>this.onActualisation(), 15000);
+    setInterval(() => this.onActualisation(), 15000);
   }
 
   sliderToggle() {
@@ -59,13 +59,12 @@ export class AppComponent {
     this.httpClient
       .get('http://localhost:8000/getCapteurs')
       .subscribe((data) => {
-        this.totalAngularPackages = data;
+        this.response = data;
       });
-    console.log(this.totalAngularPackages);
     for (let i = 0; i < 4; i++) {
-      this.getCapteursValue[i].id = this.totalAngularPackages.capteurs[i].id;
-      this.getCapteursValue[i].intensity =
-        this.totalAngularPackages.capteurs[i].intensity;
+      this.getCapteursValue[i].id = this.response.capteurs[i].id;
+      this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
+      this.capteursData[this.response.capteurs[i].id - 1].intensity = this.response.capteurs[i].intensity;
     }
   }
 
