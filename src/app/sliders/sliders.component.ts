@@ -59,6 +59,7 @@ export class SlidersComponent implements OnInit {
     this.httpClient.post('http://localhost:8000/postCapteurs', body,{'headers':headers}).subscribe(data => {
       console.log(data);
     });
+    console.log(this.httpClient.post('http://localhost:8000/postCapteurs', body,{'headers':headers}));
   }
 
   @HostListener('document:click', ['$event'])

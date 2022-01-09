@@ -48,9 +48,9 @@ export class AppComponent {
         '../assets/icons/fire-solid.svg'
       )
     );
-    setInterval(function () {
+    /*setInterval(function () {
       this.onActualisation();
-    }, 15000);
+    }, 15000);*/
   }
 
   sliderToggle() {
