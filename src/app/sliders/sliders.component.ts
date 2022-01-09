@@ -21,9 +21,9 @@ export class SlidersComponent implements OnInit {
   idCapteur: number;
   sliderValue;
   postId: number;
-  postCapteur = {"capteurs" : [{
-    "id": 42,
-    "intensity": 8
+  postCapteur = {capteurs : [{
+    id: 42,
+    intensity : 8,
   }]}
 
   constructor(private markerService: MarkerService, private httpClient: HttpClient) {}
@@ -54,8 +54,9 @@ export class SlidersComponent implements OnInit {
 
   postCapteurs(){
     this.postCapteur.capteurs[0].id = this.idCapteur;
-    this.postCapteur.capteurs[0].intensity = this.capteursData[this.idCapteur-1].intensity;
+    this.postCapteur.capteurs[0].intensity = Number(this.capteursData[this.idCapteur-1].intensity);
     const body=JSON.stringify(this.postCapteur);
+    console.log(body);
     this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe(data => {
       console.log(data);
     });
