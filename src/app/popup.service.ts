@@ -13,4 +13,12 @@ export class PopUpService {
       `<div>Intensité détectée: ${data.intensity}</div>`
     );
   }
+  
+  makeFirePopup(data: any): string {
+    return (
+      `` +
+      `<div>Id Feu: ${data.id}</div>` +
+      `<div>Intensité Feu: ${data.intensity}</div>`
+    );
+  }
 }

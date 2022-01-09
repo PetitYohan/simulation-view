@@ -1,4 +1,4 @@
-export class Capteur {
+export class Feu {
     id: number = 0;
     intensity: number = 9;
     positionX: number = 0;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PopUpService } from './popup.service';
 import * as L from 'leaflet';
+import { Feu } from './feu';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class MarkerService {
   idClick = 1;
   map;
 
-  constructor(private http: HttpClient, private popupService: PopUpService) {}
+  constructor(private http: HttpClient, private popupService: PopUpService) { }
 
   static scaledRadius(val: number, maxVal: number): number {
     return 1000 * (val / maxVal) + 75;
@@ -58,5 +59,14 @@ export class MarkerService {
       this.idClick = e.target.myCustomID;
     });
     this.circleList[id] = circle;
+  }
+
+  addFire(data: Feu) {
+    var iconFire = L.icon({
+      iconUrl: '../assets/icons/fire.png',
+      iconSize: [19.2, 25.6], // size of the icon
+      iconAnchor: [9.6, 12.8], // point of the icon which will correspond to marker's location
+    });
+    L.marker([data.positionY, data.positionX], { icon: iconFire }).addTo(this.map).bindPopup(this.popupService.makeFirePopup({ id: data.id, intensity: data.intensity }));
   }
 }
