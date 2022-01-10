@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
 import {
   Component,
   EventEmitter,
@@ -6,28 +6,37 @@ import {
   Input,
   OnInit,
   Output,
-} from '@angular/core';
-import { Feu } from '../feu';
-import { MarkerService } from '../marker.service';
+} from "@angular/core";
+import { exit } from "process";
+import { Feu } from "../feu";
+import { MarkerService } from "../marker.service";
 
 @Component({
-  selector: 'app-sliders',
-  templateUrl: './sliders.component.html',
-  styleUrls: ['./sliders.component.css'],
+  selector: "app-sliders",
+  templateUrl: "./sliders.component.html",
+  styleUrls: ["./sliders.component.css"],
 })
 export class SlidersComponent implements OnInit {
   @Input() capteursData: any;
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
-  @Output() feux: EventEmitter<Feu[]> = new EventEmitter();
+  feux: Feu[];
+  @Output() feuxChange: EventEmitter<Feu[]> = new EventEmitter();
   idCapteur: number;
   sliderValue;
   postId: number;
-  postCapteur = {capteurs : [{
-    id: 42,
-    intensity : 8,
-  }]}
+  postCapteur = {
+    capteurs: [
+      {
+        id: 42,
+        intensity: 8,
+      },
+    ],
+  };
 
-  constructor(private markerService: MarkerService, private httpClient: HttpClient) {}
+  constructor(
+    private markerService: MarkerService,
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit() {
     this.sliderValue = 0;
@@ -53,20 +62,40 @@ export class SlidersComponent implements OnInit {
     this.postCapteurs();
   }
 
-  postCapteurs(){
+  postCapteurs() {
     this.postCapteur.capteurs[0].id = this.idCapteur;
-    this.postCapteur.capteurs[0].intensity = Number(this.capteursData[this.idCapteur-1].intensity);
-    const body=JSON.stringify(this.postCapteur);
-    this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe((data:Feu) => {
-      const feu = new Feu()
-      feu.id = data.id;
-      feu.intensity = data.intensity;
-      feu.positionX = data.positionX;
-      feu.positionY = data.positionY;
-    });
+    this.postCapteur.capteurs[0].intensity = Number(
+      this.capteursData[this.idCapteur - 1].intensity
+    );
+    const body = JSON.stringify(this.postCapteur);
+    this.httpClient
+      .post("http://localhost:8000/postCapteurs", body)
+      .subscribe((data: Feu) => {
+        const exist = this.feux.find((x) => x.id === data.id);
+        if (typeof exist !== "undefined") {
+          if (exist.intensity == 0) {
+            this.markerService.deleteFire(data);
+            const index = this.feux.indexOf(exist);
+            if (index > -1) {
+              this.feux.splice(index, 1);
+            }
+          } else {
+            this.feux.find((x) => x.id === data.id).intensity = data.intensity;
+            this.markerService.updateFire(data);
+          }
+        } else {
+          const feu = new Feu();
+          feu.id = data.id;
+          feu.intensity = data.intensity;
+          feu.positionX = data.positionX;
+          feu.positionY = data.positionY;
+          this.feux.push(feu);
+        }
+        this.feuxChange.emit(this.feux);
+      });
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener("document:click", ["$event"])
   documentClick(event: MouseEvent) {
     this.idCapteur = this.markerService.idClick;
     for (const c of this.capteursData) {

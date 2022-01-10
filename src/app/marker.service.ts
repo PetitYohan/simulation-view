@@ -11,6 +11,7 @@ export class MarkerService {
   capteursData: any;
   circleMarker: any;
   circleList = [];
+  fireList = [];
   idClick = 1;
   map;
 
@@ -67,6 +68,16 @@ export class MarkerService {
       iconSize: [19.2, 25.6], // size of the icon
       iconAnchor: [9.6, 12.8], // point of the icon which will correspond to marker's location
     });
-    L.marker([data.positionY, data.positionX], { icon: iconFire }).addTo(this.map).bindPopup(this.popupService.makeFirePopup({ id: data.id, intensity: data.intensity }));
+    const fire = L.marker([data.positionY, data.positionX], { icon: iconFire }).addTo(this.map).bindPopup(this.popupService.makeFirePopup({ id: data.id, intensity: data.intensity }));
+    this.fireList.push(fire);
+  }
+
+  updateFire(data: Feu){
+    this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
+    this.addFire(data);
+  }
+
+  deleteFire(data: Feu){
+    this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
   }
 }
