@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Capteur } from '../capteur';
+import { Feu } from '../feu';
 import { MarkerService } from '../marker.service';
 
 @Component({
@@ -18,6 +18,7 @@ import { MarkerService } from '../marker.service';
 export class SlidersComponent implements OnInit {
   @Input() capteursData: any;
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
+  @Output() feux: EventEmitter<Feu[]> = new EventEmitter();
   idCapteur: number;
   sliderValue;
   postId: number;
@@ -56,8 +57,12 @@ export class SlidersComponent implements OnInit {
     this.postCapteur.capteurs[0].id = this.idCapteur;
     this.postCapteur.capteurs[0].intensity = Number(this.capteursData[this.idCapteur-1].intensity);
     const body=JSON.stringify(this.postCapteur);
-    this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe(data => {
-      console.log(data);
+    this.httpClient.post('http://localhost:8000/postCapteurs', body).subscribe((data:Feu) => {
+      const feu = new Feu()
+      feu.id = data.id;
+      feu.intensity = data.intensity;
+      feu.positionX = data.positionX;
+      feu.positionY = data.positionY;
     });
   }
 
