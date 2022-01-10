@@ -25,12 +25,6 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map;
-  feu: Feu = {
-    id:1,
-    intensity:4,
-    positionX: 4.82,
-    positionY: 45.8
-  };
   @Input() capteursData: any;
 
   private initMap(): void {
@@ -57,10 +51,5 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makeCircleMarkers(this.map, this.capteursData);
-    this.addFeu(this.feu);
-  }
-
-  addFeu(feu : Feu) {
-    this.markerService.addFire(feu);
   }
 }

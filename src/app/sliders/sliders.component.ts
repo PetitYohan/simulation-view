@@ -7,7 +7,6 @@ import {
   OnInit,
   Output,
 } from "@angular/core";
-import { exit } from "process";
 import { Feu } from "../feu";
 import { MarkerService } from "../marker.service";
 
@@ -20,7 +19,6 @@ export class SlidersComponent implements OnInit {
   @Input() capteursData: any;
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
   feux: Feu[];
-  @Output() feuxChange: EventEmitter<Feu[]> = new EventEmitter();
   idCapteur: number;
   sliderValue;
   postId: number;
@@ -90,8 +88,8 @@ export class SlidersComponent implements OnInit {
           feu.positionX = data.positionX;
           feu.positionY = data.positionY;
           this.feux.push(feu);
+          this.markerService.addFire(feu);
         }
-        this.feuxChange.emit(this.feux);
       });
   }
 
