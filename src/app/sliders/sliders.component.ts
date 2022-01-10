@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   EventEmitter,
@@ -6,14 +6,14 @@ import {
   Input,
   OnInit,
   Output,
-} from "@angular/core";
-import { Feu } from "../feu";
-import { MarkerService } from "../marker.service";
+} from '@angular/core';
+import { Feu } from '../feu';
+import { MarkerService } from '../marker.service';
 
 @Component({
-  selector: "app-sliders",
-  templateUrl: "./sliders.component.html",
-  styleUrls: ["./sliders.component.css"],
+  selector: 'app-sliders',
+  templateUrl: './sliders.component.html',
+  styleUrls: ['./sliders.component.css'],
 })
 export class SlidersComponent implements OnInit {
   @Input() capteursData: any;
@@ -67,33 +67,13 @@ export class SlidersComponent implements OnInit {
     );
     const body = JSON.stringify(this.postCapteur);
     this.httpClient
-      .post("http://localhost:8000/postCapteurs", body)
+      .post('http://localhost:8000/postCapteurs', body)
       .subscribe((data: Feu) => {
-        const exist = this.feux.find((x) => x.id === data.id);
-        if (typeof exist !== "undefined") {
-          if (exist.intensity == 0) {
-            this.markerService.deleteFire(data);
-            const index = this.feux.indexOf(exist);
-            if (index > -1) {
-              this.feux.splice(index, 1);
-            }
-          } else {
-            this.feux.find((x) => x.id === data.id).intensity = data.intensity;
-            this.markerService.updateFire(data);
-          }
-        } else {
-          const feu = new Feu();
-          feu.id = data.id;
-          feu.intensity = data.intensity;
-          feu.positionX = data.positionX;
-          feu.positionY = data.positionY;
-          this.feux.push(feu);
-          this.markerService.addFire(feu);
-        }
+        this.markerService.updateFeu(this.feux, data);
       });
   }
 
-  @HostListener("document:click", ["$event"])
+  @HostListener('document:click', ['$event'])
   documentClick(event: MouseEvent) {
     this.idCapteur = this.markerService.idClick;
     for (const c of this.capteursData) {
