@@ -60,6 +60,7 @@ export class AppComponent {
       .get('http://localhost:8000/getCapteurs')
       .subscribe((data) => {
         this.response = data;
+        console.log(data);
       });
     for (let i = 0; i < 4; i++) {
       this.getCapteursValue[i].id = this.response.capteurs[i].id;
