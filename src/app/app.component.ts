@@ -70,7 +70,7 @@ export class AppComponent {
           this.markerService.updateCircleMarkers(
             this.markerService.map,
             this.getCapteursValue[i].id,
-            this.getCapteursValue[i]
+            this.getCapteursValue[i].intensity
           );
         }
       });
