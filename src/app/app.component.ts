@@ -89,6 +89,8 @@ export class AppComponent {
         console.log("j'ajoute un feu");
         this.markerService.updateFeu(this.getFeuxValue, resp);
       }
+    } else {
+      console.log("je récupère du vide");
     }
   }
 
