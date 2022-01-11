@@ -101,6 +101,7 @@ export class AppComponent {
 
   onActualisation(): any {
     this.getCapteurs();
+    this.getFeux();
     for (let i = 0; i <= 3; i++) {
       this.markerService.updateCircleMarkers(
         this.markerService.map,
@@ -108,6 +109,5 @@ export class AppComponent {
         this.getCapteursValue[i].intensity
       );
     }
-    this.getFeux();
   }
 }
