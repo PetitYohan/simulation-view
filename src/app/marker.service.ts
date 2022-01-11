@@ -15,7 +15,7 @@ export class MarkerService {
   idClick = 1;
   map;
 
-  constructor(private http: HttpClient, private popupService: PopUpService) {}
+  constructor(private http: HttpClient, private popupService: PopUpService) { }
 
   static scaledRadius(val: number, maxVal: number): number {
     return 1000 * (val / maxVal) + 75;
@@ -81,8 +81,9 @@ export class MarkerService {
   }
 
   updateFire(data: Feu) {
-    console.log(this.fireList);
-    this.map.removeLayer(this.fireList.find((x) => x.myCustomID === data.id));
+    if (typeof this.fireList.find((x) => x.myCustomID === data.id) !== "undefined") {
+      this.map.removeLayer(this.fireList.find((x) => x.myCustomID === data.id));
+    }
     this.addFire(data);
   }
 
