@@ -80,6 +80,7 @@ export class MarkerService {
   }
 
   updateFire(data: Feu) {
+    console.log(this.fireList);
     this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
     this.addFire(data);
   }
