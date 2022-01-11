@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { PopUpService } from './popup.service';
-import * as L from 'leaflet';
-import { Feu } from './feu';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { PopUpService } from "./popup.service";
+import * as L from "leaflet";
+import { Feu } from "./feu";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class MarkerService {
   capteursData: any;
@@ -32,7 +32,7 @@ export class MarkerService {
       circle.bindPopup(this.popupService.makeCapteurPopup(c));
       circle.myCustomID = c.id;
       circle.addTo(map);
-      circle.on('click', (e) => {
+      circle.on("click", (e) => {
         this.idClick = e.target.myCustomID;
       });
       this.circleList[c.id] = circle;
@@ -56,7 +56,7 @@ export class MarkerService {
     );
     circle.myCustomID = id;
     circle.addTo(map);
-    circle.on('click', (e) => {
+    circle.on("click", (e) => {
       this.idClick = e.target.myCustomID;
     });
     this.circleList[id] = circle;
@@ -64,7 +64,7 @@ export class MarkerService {
 
   addFire(data: Feu) {
     var iconFire = L.icon({
-      iconUrl: '../assets/icons/fire.png',
+      iconUrl: "../assets/icons/fire.png",
       iconSize: [19.2, 25.6], // size of the icon
       iconAnchor: [9.6, 12.8], // point of the icon which will correspond to marker's location
     });
@@ -76,12 +76,13 @@ export class MarkerService {
           intensity: data.intensity,
         })
       );
+    fire.myCustomID = data.id;
     this.fireList.push(fire);
   }
 
   updateFire(data: Feu) {
     console.log(this.fireList);
-    this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
+    this.map.removeLayer(this.fireList.find((x) => x.myCustomID === data.id));
     this.addFire(data);
   }
 
@@ -91,7 +92,7 @@ export class MarkerService {
 
   updateFeu(feux: Feu[], data: Feu) {
     const exist = feux.find((x) => x.id === data.id);
-    if (typeof exist !== 'undefined') {
+    if (typeof exist !== "undefined") {
       if (exist.intensity == 0) {
         this.deleteFire(data);
         const index = feux.indexOf(exist);
