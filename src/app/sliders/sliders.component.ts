@@ -17,8 +17,8 @@ import { MarkerService } from '../marker.service';
 })
 export class SlidersComponent implements OnInit {
   @Input() capteursData: any;
+  @Input() feux: Feu[];
   @Output() capteursChange: EventEmitter<any> = new EventEmitter();
-  feux: Feu[];
   idCapteur: number;
   sliderValue;
   postId: number;
@@ -69,6 +69,7 @@ export class SlidersComponent implements OnInit {
     this.httpClient
       .post('http://localhost:8000/postCapteurs', body)
       .subscribe((data: Feu) => {
+        console.log(data);
         this.markerService.updateFeu(this.feux, data);
       });
   }

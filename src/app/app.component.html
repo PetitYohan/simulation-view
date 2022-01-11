@@ -2,6 +2,7 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <app-sliders
       [capteursData]="capteursData"
+      [feux]="getFeuxValue"
       (customerChange)="capteurChangedHandler($event)"
     ></app-sliders>
   </mat-drawer>

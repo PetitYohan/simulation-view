@@ -62,7 +62,6 @@ export class AppComponent {
       .get('http://localhost:8000/getCapteurs')
       .subscribe((data) => {
         this.response = data;
-        console.log(data);
       });
     for (let i = 0; i < 4; i++) {
       this.getCapteursValue[i].id = this.response.capteurs[i].id;
@@ -79,14 +78,14 @@ export class AppComponent {
       .subscribe((data: any) => {
         response = data.feux;
       });
-    for (let i = 0; i < response.length; i++) {
+    for (const rep of response) {
       const feu = new Feu();
-      feu.id = response[i].id;
-      feu.intensity = response[i].intensity;
-      feu.positionX = response[i].positionX;
-      feu.positionY = response[i].positionY;
+      feu.id = rep.id;
+      feu.intensity = rep.intensity;
+      feu.positionX = rep.positionX;
+      feu.positionY = rep.positionY;
       this.getFeuxValue.push(feu);
-      this.markerService.updateFeu(this.getFeuxValue, response[i]);
+      this.markerService.updateFeu(this.getFeuxValue, rep);
     }
   }
 
@@ -103,5 +102,6 @@ export class AppComponent {
         this.getCapteursValue[i].intensity
       );
     }
+    this.getFeux();
   }
 }
