@@ -100,8 +100,8 @@ export class AppComponent {
   }
 
   onActualisation(): any {
-    this.getCapteurs();
     this.getFeux();
+    this.getCapteurs();
     for (let i = 0; i <= 3; i++) {
       this.markerService.updateCircleMarkers(
         this.markerService.map,
