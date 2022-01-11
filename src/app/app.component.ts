@@ -63,14 +63,11 @@ export class AppComponent {
       .subscribe((data) => {
         this.response = data;
       });
-    if (typeof this.response !== "undefined") {
-      for (let i = 0; i < 4; i++) {
-        this.getCapteursValue[i].id = this.response.capteurs[i].id;
-        this.getCapteursValue[i].intensity =
-          this.response.capteurs[i].intensity;
-        this.capteursData[this.response.capteurs[i].id - 1].intensity =
-          this.response.capteurs[i].intensity;
-      }
+    for (let i = 0; i < 4; i++) {
+      this.getCapteursValue[i].id = this.response.capteurs[i].id;
+      this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
+      this.capteursData[this.response.capteurs[i].id - 1].intensity =
+        this.response.capteurs[i].intensity;
     }
   }
 
