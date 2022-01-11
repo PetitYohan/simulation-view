@@ -17,6 +17,7 @@ export class AppComponent {
   slide = false;
   capteursData: any;
   response;
+  responseF: Feu[];
   getCapteursValue: Capteur[] = [
     { id: 0, intensity: 0 },
     { id: 1, intensity: 0 },
@@ -72,15 +73,14 @@ export class AppComponent {
   }
 
   getFeux() {
-    let response: Feu[];
     this.httpClient
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
-        response = data.feux;
+        this.responseF = data.feux;
         console.log(data);
       });
-    console.log(response);
-    for (const resp of response) {
+    console.log(this.responseF);
+    for (const resp of this.responseF) {
       const feu = new Feu();
       feu.id = resp.id;
       feu.intensity = resp.intensity;
