@@ -88,7 +88,7 @@ export class MarkerService {
   }
 
   deleteFire(data: Feu) {
-    this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
+    this.map.removeLayer(this.fireList.find((x) => x.myCustomID === data.id));
   }
 
   updateFeu(feux: Feu[], data: Feu) {
