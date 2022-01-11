@@ -95,6 +95,7 @@ export class MarkerService {
   updateFeu(feux: Feu[], data: Feu) {
     const exist = feux.find((x) => x.id === data.id);
     if (typeof exist !== "undefined") {
+      console.log("j'existe déjà");
       if (exist.intensity == 0) {
         this.deleteFire(data);
         const index = feux.indexOf(exist);
@@ -106,6 +107,7 @@ export class MarkerService {
         this.updateFire(data);
       }
     } else {
+      console.log("j'existe pas encore");
       const feu = new Feu();
       feu.id = data.id;
       feu.intensity = data.intensity;
@@ -113,6 +115,7 @@ export class MarkerService {
       feu.positionY = data.positionY;
       feux.push(feu);
       this.addFire(feu);
+      console.log("j'existe");
     }
   }
 }
