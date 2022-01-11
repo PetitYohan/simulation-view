@@ -46,8 +46,8 @@ export class MarkerService {
         map.removeLayer(this.circleList[i]);
       }
     }
-    const lon = this.circleList[id-1].getLatLng().lng;
-    const lat = this.circleList[id-1].getLatLng().lat;
+    const lon = this.circleList[id].getLatLng().lng;
+    const lat = this.circleList[id].getLatLng().lat;
     const circle = L.circle([lat, lon], {
       radius: MarkerService.scaledRadius(intensity, 9),
     });
