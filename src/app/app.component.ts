@@ -77,16 +77,17 @@ export class AppComponent {
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
         response = data.feux;
+        console.log(data);
       });
     console.log(response);
-    for (let i = 0; i < response.length; i++) {
+    for (const resp of response) {
       const feu = new Feu();
-      feu.id = response[i].id;
-      feu.intensity = response[i].intensity;
-      feu.positionX = response[i].positionX;
-      feu.positionY = response[i].positionY;
+      feu.id = resp.id;
+      feu.intensity = resp.intensity;
+      feu.positionX = resp.positionX;
+      feu.positionY = resp.positionY;
       this.getFeuxValue.push(feu);
-      this.markerService.updateFeu(this.getFeuxValue, response[i]);
+      this.markerService.updateFeu(this.getFeuxValue, resp);
     }
   }
 
