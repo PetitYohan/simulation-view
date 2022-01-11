@@ -91,6 +91,7 @@ export class MarkerService {
   }
 
   updateFeu(feux: Feu[], data: Feu) {
+    console.log(feux);
     const exist = feux.find((x) => x.id === data.id);
     if (typeof exist !== "undefined") {
       if (exist.intensity == 0) {
