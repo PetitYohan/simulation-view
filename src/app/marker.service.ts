@@ -39,27 +39,27 @@ export class MarkerService {
     }
   }
 
-  updateCircleMarkers(map: L.map, id, intensity) {
+  updateCircleMarkers(map: L.map, capteur: any) {
     var i: number;
     for (i = 1; i <= 60; i++) {
-      if (this.circleList[i].myCustomID == id) {
+      if (this.circleList[i].myCustomID == capteur.id) {
         map.removeLayer(this.circleList[i]);
       }
     }
-    const lon = this.circleList[id].getLatLng().lng;
-    const lat = this.circleList[id].getLatLng().lat;
+    const lon = this.circleList[capteur.id].getLatLng().lng;
+    const lat = this.circleList[capteur.id].getLatLng().lat;
     const circle = L.circle([lat, lon], {
-      radius: MarkerService.scaledRadius(intensity, 9),
+      radius: MarkerService.scaledRadius(capteur.intensity, 9),
     });
     circle.bindPopup(
-      this.popupService.makeCapteurPopup({ id: id, intensity: intensity })
+      this.popupService.makeCapteurPopup({ id: capteur.id, intensity: capteur.intensity })
     );
-    circle.myCustomID = id;
+    circle.myCustomID = capteur.id;
     circle.addTo(map);
     circle.on("click", (e) => {
       this.idClick = e.target.myCustomID;
     });
-    this.circleList[id] = circle;
+    this.circleList[capteur.id] = circle;
   }
 
   addFire(data: Feu) {
@@ -95,7 +95,6 @@ export class MarkerService {
   updateFeu(feux: Feu[], data: Feu) {
     const exist = feux.find((x) => x.id === data.id);
     if (typeof exist !== "undefined") {
-      console.log("j'existe déjà");
       if (exist.intensity == 0) {
         this.deleteFire(data);
         const index = feux.indexOf(exist);
@@ -107,7 +106,6 @@ export class MarkerService {
         this.updateFire(data);
       }
     } else {
-      console.log("j'existe pas encore");
       const feu = new Feu();
       feu.id = data.id;
       feu.intensity = data.intensity;
@@ -115,7 +113,6 @@ export class MarkerService {
       feu.positionY = data.positionY;
       feux.push(feu);
       this.addFire(feu);
-      console.log("j'existe");
     }
   }
 }
