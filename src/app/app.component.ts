@@ -102,6 +102,6 @@ export class AppComponent {
         this.getCapteursValue[i].intensity
       );
     }
-    //this.getFeux();
+    this.getFeux();
   }
 }
