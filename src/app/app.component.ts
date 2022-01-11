@@ -4,6 +4,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import capteurs from '../assets/data/capteurs.json';
 import { Capteur } from './capteur';
+import { Feu } from './feu';
 import { MarkerService } from './marker.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class AppComponent {
     { id: 2, intensity: 0 },
     { id: 3, intensity: 0 },
   ];
+  getFeuxValue: Feu[] = [{ id: 0, intensity: 0, positionX: 0, positionY: 0 }];
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -65,7 +67,26 @@ export class AppComponent {
     for (let i = 0; i < 4; i++) {
       this.getCapteursValue[i].id = this.response.capteurs[i].id;
       this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
-      this.capteursData[this.response.capteurs[i].id - 1].intensity = this.response.capteurs[i].intensity;
+      this.capteursData[this.response.capteurs[i].id - 1].intensity =
+        this.response.capteurs[i].intensity;
+    }
+  }
+
+  getFeux() {
+    let response: Feu[];
+    this.httpClient
+      .get('http://localhost:8000/getFeux')
+      .subscribe((data: any) => {
+        response = data.feux;
+      });
+    for (let i = 0; i < response.length; i++) {
+      const feu = new Feu();
+      feu.id = response[i].id;
+      feu.intensity = response[i].intensity;
+      feu.positionX = response[i].positionX;
+      feu.positionY = response[i].positionY;
+      this.getFeuxValue.push(feu);
+      this.markerService.updateFeu(this.getFeuxValue, response[i]);
     }
   }
 

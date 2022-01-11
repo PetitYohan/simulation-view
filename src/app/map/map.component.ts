@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
-import { Feu } from '../feu';
 import { MarkerService } from '../marker.service';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -46,7 +45,7 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
-  constructor(private markerService: MarkerService) { }
+  constructor(private markerService: MarkerService) {}
 
   ngAfterViewInit(): void {
     this.initMap();

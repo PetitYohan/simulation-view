@@ -15,7 +15,7 @@ export class MarkerService {
   idClick = 1;
   map;
 
-  constructor(private http: HttpClient, private popupService: PopUpService) { }
+  constructor(private http: HttpClient, private popupService: PopUpService) {}
 
   static scaledRadius(val: number, maxVal: number): number {
     return 1000 * (val / maxVal) + 75;
@@ -68,16 +68,47 @@ export class MarkerService {
       iconSize: [19.2, 25.6], // size of the icon
       iconAnchor: [9.6, 12.8], // point of the icon which will correspond to marker's location
     });
-    const fire = L.marker([data.positionY, data.positionX], { icon: iconFire }).addTo(this.map).bindPopup(this.popupService.makeFirePopup({ id: data.id, intensity: data.intensity }));
+    const fire = L.marker([data.positionY, data.positionX], { icon: iconFire })
+      .addTo(this.map)
+      .bindPopup(
+        this.popupService.makeFirePopup({
+          id: data.id,
+          intensity: data.intensity,
+        })
+      );
     this.fireList.push(fire);
   }
 
-  updateFire(data: Feu){
+  updateFire(data: Feu) {
     this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
     this.addFire(data);
   }
 
-  deleteFire(data: Feu){
+  deleteFire(data: Feu) {
     this.map.removeLayer(this.fireList.find((x) => x.id === data.id));
+  }
+
+  updateFeu(feux: Feu[], data: Feu) {
+    const exist = feux.find((x) => x.id === data.id);
+    if (typeof exist !== 'undefined') {
+      if (exist.intensity == 0) {
+        this.deleteFire(data);
+        const index = feux.indexOf(exist);
+        if (index > -1) {
+          feux.splice(index, 1);
+        }
+      } else {
+        feux.find((x) => x.id === data.id).intensity = data.intensity;
+        this.updateFire(data);
+      }
+    } else {
+      const feu = new Feu();
+      feu.id = data.id;
+      feu.intensity = data.intensity;
+      feu.positionX = data.positionX;
+      feu.positionY = data.positionY;
+      feux.push(feu);
+      this.addFire(feu);
+    }
   }
 }
