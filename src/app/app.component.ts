@@ -78,6 +78,7 @@ export class AppComponent {
       .subscribe((data: any) => {
         response = data.feux;
       });
+    console.log(response);
     for (let i = 0; i < response.length; i++) {
       const feu = new Feu();
       feu.id = response[i].id;
