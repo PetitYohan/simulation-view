@@ -76,16 +76,16 @@ export class AppComponent {
     this.httpClient
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
-        response.push(data.feux);
+        response = data.feux;
       });
-    for (const rep of response) {
+    for (let i = 0; i < response.length; i++) {
       const feu = new Feu();
-      feu.id = rep.id;
-      feu.intensity = rep.intensity;
-      feu.positionX = rep.positionX;
-      feu.positionY = rep.positionY;
+      feu.id = response[i].id;
+      feu.intensity = response[i].intensity;
+      feu.positionX = response[i].positionX;
+      feu.positionY = response[i].positionY;
       this.getFeuxValue.push(feu);
-      this.markerService.updateFeu(this.getFeuxValue, rep);
+      this.markerService.updateFeu(this.getFeuxValue, response[i]);
     }
   }
 
