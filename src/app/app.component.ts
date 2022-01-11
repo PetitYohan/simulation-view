@@ -63,13 +63,13 @@ export class AppComponent {
       .get("http://localhost:8000/getCapteurs")
       .subscribe((data) => {
         this.response = data;
+        for (let i = 0; i < 4; i++) {
+          this.getCapteursValue[i].id = this.response.capteurs[i].id;
+          this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
+          this.capteursData[this.response.capteurs[i].id - 1].intensity =
+            this.response.capteurs[i].intensity;
+        }
       });
-    for (let i = 0; i < 4; i++) {
-      this.getCapteursValue[i].id = this.response.capteurs[i].id;
-      this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
-      this.capteursData[this.response.capteurs[i].id - 1].intensity =
-        this.response.capteurs[i].intensity;
-    }
   }
 
   getFeux() {
@@ -77,22 +77,22 @@ export class AppComponent {
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
         this.responseF = data.feux;
+        if (typeof this.responseF !== "undefined") {
+          for (const resp of this.responseF) {
+            const feu = new Feu();
+            feu.id = resp.id;
+            feu.intensity = resp.intensity;
+            feu.positionX = resp.positionX;
+            feu.positionY = resp.positionY;
+            this.getFeuxValue.push(feu);
+            console.log("j'ajoute un feu");
+            this.markerService.updateFeu(this.getFeuxValue, resp);
+          }
+        } else {
+          console.log("je récupère du vide");
+          console.log(this.responseF);
+        }
       });
-    if (typeof this.responseF !== "undefined") {
-      for (const resp of this.responseF) {
-        const feu = new Feu();
-        feu.id = resp.id;
-        feu.intensity = resp.intensity;
-        feu.positionX = resp.positionX;
-        feu.positionY = resp.positionY;
-        this.getFeuxValue.push(feu);
-        console.log("j'ajoute un feu");
-        this.markerService.updateFeu(this.getFeuxValue, resp);
-      }
-    } else {
-      console.log("je récupère du vide");
-      console.log(this.responseF);
-    }
   }
 
   capteurChangedHandler(c) {
@@ -100,8 +100,8 @@ export class AppComponent {
   }
 
   onActualisation(): any {
-    this.getFeux();
     this.getCapteurs();
+    this.getFeux();
     for (let i = 0; i <= 3; i++) {
       this.markerService.updateCircleMarkers(
         this.markerService.map,
