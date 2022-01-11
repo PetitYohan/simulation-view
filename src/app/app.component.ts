@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import capteurs from '../assets/data/capteurs.json';
-import { Capteur } from './capteur';
-import { Feu } from './feu';
-import { MarkerService } from './marker.service';
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+import capteurs from "../assets/data/capteurs.json";
+import { Capteur } from "./capteur";
+import { Feu } from "./feu";
+import { MarkerService } from "./marker.service";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   idCapteur: number;
@@ -33,21 +33,21 @@ export class AppComponent {
   ) {
     this.capteursData = capteurs;
     this.matIconRegistry.addSvgIcon(
-      'map',
+      "map",
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '../assets/icons/map-marked-alt-solid.svg'
+        "../assets/icons/map-marked-alt-solid.svg"
       )
     );
     this.matIconRegistry.addSvgIcon(
-      'wrench',
+      "wrench",
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '../assets/icons/wrench-solid.svg'
+        "../assets/icons/wrench-solid.svg"
       )
     );
     this.matIconRegistry.addSvgIcon(
-      'fire',
+      "fire",
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '../assets/icons/fire-solid.svg'
+        "../assets/icons/fire-solid.svg"
       )
     );
     setInterval(() => this.onActualisation(), 15000);
@@ -59,22 +59,25 @@ export class AppComponent {
 
   getCapteurs() {
     this.httpClient
-      .get('http://localhost:8000/getCapteurs')
+      .get("http://localhost:8000/getCapteurs")
       .subscribe((data) => {
         this.response = data;
       });
-    for (let i = 0; i < 4; i++) {
-      this.getCapteursValue[i].id = this.response.capteurs[i].id;
-      this.getCapteursValue[i].intensity = this.response.capteurs[i].intensity;
-      this.capteursData[this.response.capteurs[i].id - 1].intensity =
-        this.response.capteurs[i].intensity;
+    if (typeof this.response !== "undefined") {
+      for (let i = 0; i < 4; i++) {
+        this.getCapteursValue[i].id = this.response.capteurs[i].id;
+        this.getCapteursValue[i].intensity =
+          this.response.capteurs[i].intensity;
+        this.capteursData[this.response.capteurs[i].id - 1].intensity =
+          this.response.capteurs[i].intensity;
+      }
     }
   }
 
   getFeux() {
     let response: Feu[];
     this.httpClient
-      .get('http://localhost:8000/getFeux')
+      .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
         response = data.feux;
       });
