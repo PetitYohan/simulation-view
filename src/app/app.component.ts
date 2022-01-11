@@ -78,14 +78,16 @@ export class AppComponent {
       .subscribe((data: any) => {
         this.responseF = data.feux;
       });
-    for (const resp of this.responseF) {
-      const feu = new Feu();
-      feu.id = resp.id;
-      feu.intensity = resp.intensity;
-      feu.positionX = resp.positionX;
-      feu.positionY = resp.positionY;
-      this.getFeuxValue.push(feu);
-      this.markerService.updateFeu(this.getFeuxValue, resp);
+    if (typeof this.responseF !== "undefined") {
+      for (const resp of this.responseF) {
+        const feu = new Feu();
+        feu.id = resp.id;
+        feu.intensity = resp.intensity;
+        feu.positionX = resp.positionX;
+        feu.positionY = resp.positionY;
+        this.getFeuxValue.push(feu);
+        this.markerService.updateFeu(this.getFeuxValue, resp);
+      }
     }
   }
 
