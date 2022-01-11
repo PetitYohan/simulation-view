@@ -76,8 +76,7 @@ export class AppComponent {
     this.httpClient
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
-        console.log(data);
-        response = data.feux;
+        response.push(data.feux);
       });
     for (const rep of response) {
       const feu = new Feu();
