@@ -68,8 +68,8 @@ export class SlidersComponent implements OnInit {
     const body = JSON.stringify(this.postCapteur);
     this.httpClient
       .post('http://localhost:8000/postCapteurs', body)
-      .subscribe((data: Feu) => {
-        this.markerService.updateFeu(this.feux, data);
+      .subscribe((data: any) => {
+        this.markerService.updateFeu(this.feux, data.feux[0]);
       });
   }
 
