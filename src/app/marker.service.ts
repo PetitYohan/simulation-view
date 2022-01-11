@@ -88,7 +88,6 @@ export class MarkerService {
   }
 
   deleteFire(data: Feu) {
-    console.log(this.fireList);
     this.map.removeLayer(this.fireList.find((x) => x.myCustomID === data.id));
   }
 

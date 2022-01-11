@@ -78,6 +78,7 @@ export class AppComponent {
       .subscribe((data: any) => {
         this.responseF = data.feux;
       });
+      console.log(this.response)
     if (typeof this.responseF !== "undefined") {
       for (const resp of this.responseF) {
         const feu = new Feu();
