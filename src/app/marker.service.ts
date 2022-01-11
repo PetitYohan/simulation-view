@@ -68,6 +68,7 @@ export class MarkerService {
       iconSize: [19.2, 25.6], // size of the icon
       iconAnchor: [9.6, 12.8], // point of the icon which will correspond to marker's location
     });
+    console.log(data);
     const fire = L.marker([data.positionY, data.positionX], { icon: iconFire })
       .addTo(this.map)
       .bindPopup(
