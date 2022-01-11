@@ -77,8 +77,9 @@ export class AppComponent {
       .get("http://localhost:8000/getFeux")
       .subscribe((data: any) => {
         this.responseF = data.feux;
+        console.log(this.responseF);
       });
-      console.log(this.responseF)
+      console.log(this.responseF);
     if (typeof this.responseF !== "undefined") {
       for (const resp of this.responseF) {
         const feu = new Feu();
