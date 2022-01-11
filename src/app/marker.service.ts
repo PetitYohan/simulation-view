@@ -39,27 +39,27 @@ export class MarkerService {
     }
   }
 
-  updateCircleMarkers(map: L.map, capteur: any) {
+  updateCircleMarkers(map: L.map, id, intensity) {
     var i: number;
     for (i = 1; i <= 60; i++) {
-      if (this.circleList[i].myCustomID == capteur.id) {
+      if (this.circleList[i].myCustomID == id) {
         map.removeLayer(this.circleList[i]);
       }
     }
-    const lon = this.circleList[capteur.id].getLatLng().lng;
-    const lat = this.circleList[capteur.id].getLatLng().lat;
+    const lon = this.circleList[id-1].getLatLng().lng;
+    const lat = this.circleList[id-1].getLatLng().lat;
     const circle = L.circle([lat, lon], {
-      radius: MarkerService.scaledRadius(capteur.intensity, 9),
+      radius: MarkerService.scaledRadius(intensity, 9),
     });
     circle.bindPopup(
-      this.popupService.makeCapteurPopup({ id: capteur.id, intensity: capteur.intensity })
+      this.popupService.makeCapteurPopup({ id: id, intensity: intensity })
     );
-    circle.myCustomID = capteur.id;
+    circle.myCustomID = id;
     circle.addTo(map);
     circle.on("click", (e) => {
       this.idClick = e.target.myCustomID;
     });
-    this.circleList[capteur.id] = circle;
+    this.circleList[id] = circle;
   }
 
   addFire(data: Feu) {

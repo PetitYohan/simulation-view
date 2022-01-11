@@ -69,6 +69,7 @@ export class AppComponent {
         for (let i = 0; i <= 3; i++) {
           this.markerService.updateCircleMarkers(
             this.markerService.map,
+            this.getCapteursValue[i].id,
             this.getCapteursValue[i]
           );
         }
