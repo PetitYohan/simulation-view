@@ -91,6 +91,7 @@ export class AppComponent {
       }
     } else {
       console.log("je récupère du vide");
+      console.log(this.responseF);
     }
   }
 
